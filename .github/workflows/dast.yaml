@@ -10,7 +10,12 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Checkout repository
+      - name: Set Current Date
+        env:
+          TZ: 'Asia/Tokyo'
+        run: echo "TODAY=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Run Docker Compose
@@ -23,6 +28,6 @@ jobs:
         with:
           target: "http://localhost:3000/openapi.json"
           cmd_options: '-a'
-          issue_title: '[DAST] API Security Scan Results'
+          issue_title: '[DAST] API security scan report on ${{ env.TODAY }}'
           token: ${{ secrets.GITHUB_TOKEN }}
           artifact_name: 'dast-report'
