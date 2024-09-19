@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    env:
+      TZ: 'Asia/Tokyo'
     steps:
       - name: Set Current Date
-        env:
-          TZ: 'Asia/Tokyo'
         run: echo "TODAY=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
       - name: Checkout Repository
