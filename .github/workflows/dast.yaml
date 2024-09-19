@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  dast:
+  api-scan:
+    name: API Security Scan
     runs-on: ubuntu-latest
     permissions:
       issues: write
