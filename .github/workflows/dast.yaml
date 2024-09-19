@@ -24,4 +24,5 @@ jobs:
           target: "http://localhost:3000/openapi.json"
           cmd_options: '-a'
           issue_title: '[DAST] API Security Scan Results'
+          token: ${{ secrets.GITHUB_TOKEN }}
           artifact_name: 'dast-report'
