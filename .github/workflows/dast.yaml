@@ -37,7 +37,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const issues = octokit.rest.issues.listForRepo({
+            const issues = github.rest.issues.listForRepo({
               owner,
               repo,
             })
