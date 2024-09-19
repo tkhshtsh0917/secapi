@@ -31,3 +31,15 @@ jobs:
           issue_title: '[DAST] API security scan report on ${{ env.TODAY }}'
           token: ${{ secrets.GITHUB_TOKEN }}
           artifact_name: 'dast-report'
+
+      - name: Close Old Reports
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issues = octokit.rest.issues.listForRepo({
+              owner,
+              repo,
+            })
+
+            console.log(issues)
